@@ -81,6 +81,7 @@ function TransportCompanyContainer() {
             {
                 toggle&&(
                     <form onSubmit={handleSubmit}>
+                        Company Name:
                         <input type="text" name="name" value={newItem.name} onChange={handleInputChange}/>                        
                         <button type="submit">
                             Create New Company
