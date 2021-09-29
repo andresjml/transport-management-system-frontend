@@ -1,0 +1,1 @@
+export const BASE_URL='https://fierce-citadel-67523.herokuapp.com/'
