@@ -19,9 +19,11 @@ function TransportCompanyContainer() {
 
 
     return (
+        <>
         <ul>
             {companies&&populateCompanies()}
         </ul>
+        </>
     )
 }
 
