@@ -79,8 +79,7 @@ function TripContainer() {
           body: JSON.stringify(newItem),
         })
         
-        setUpdateState(!updateState);
-        
+        setUpdateState(!updateState);        
         
     } 
 
@@ -100,7 +99,7 @@ function TripContainer() {
                             {orders&&populateOrders()}
                         </select>
                         <button type="submit">
-                            Add to Order
+                            Create New Trip
                         </button> 
                     </form>
                 )

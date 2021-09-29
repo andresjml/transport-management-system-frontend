@@ -1,7 +1,7 @@
 import React from 'react'
 
 function Trip({trip, onDelete}) {
-    
+    const [toggle, setToggle]=useState(false)    
 
 
 
