@@ -7,7 +7,7 @@ function App() {
       React App
       <NavBar/>
       <Switch>
-
+        
       </Switch>
       
     </>
