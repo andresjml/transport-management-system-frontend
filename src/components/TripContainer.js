@@ -67,7 +67,7 @@ function TripContainer() {
     }
 
 
-    //DELETE
+    //DELETE TRIP
     function onDelete(deletedTrip){
         
         fetch(BASE_URL + `trips/${deletedTrip.id}`, {
