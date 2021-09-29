@@ -31,6 +31,20 @@ function TripContainer() {
             .then(setOrders)
     }, []);
 
+    //UPDATE TRIP
+    function onEdit(updatedItem){
+        
+        fetch(BASE_URL + `trips/${updatedItem.id}`, {
+            method: "PATCH",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(updatedItem),
+          })
+
+        setUpdateState(!updateState);
+    }
+
 
 
     //DELETE
@@ -46,7 +60,7 @@ function TripContainer() {
 
     //POPULATE TRIPS
     function populateTrips(){        
-        return (trips.map(trip => <Trip key={trip.id} trip={trip} onDelete={onDelete}/>))
+        return (trips.map(trip => <Trip key={trip.id} trip={trip} onDelete={onDelete} onEdit={onEdit}/>))
     }
 
     //POPULATE VEHICLES FOR INPUT FORM
