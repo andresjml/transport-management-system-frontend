@@ -4,19 +4,41 @@ import TransportCompany from './TransportCompany';
 
 function TransportCompanyContainer() {
     const [companies, setCompanies]=useState(null)
-    
+    const [toggle, setToggle]=useState(false)
+    const [updateState, setUpdateState]=useState(false)
+    const [newItem, setNewItem]=useState({name:""})
     
     //READ COMPANIES
     useEffect(() => {
         fetch(BASE_URL +`/transport_companies`)
             .then(r=>r.json())
             .then(setCompanies)
-    }, []);
+    }, [updateState]);
 
-    //POPULATE COMPANIES
-    function populateCompanies(){        
-        return (companies.map(company => <TransportCompany key={company.id} company={company} onDelete={onDelete} onEdit={onEdit}/>))
-    }
+    //HANDLE INPUT CHANGE
+    function handleInputChange(event) {
+        setNewItem({
+            ...newItem, 
+            [event.target.name]:event.target.value
+        })  
+    } 
+
+
+    //CREATE A NEW COMPANY
+    function handleSubmit(e){
+        e.preventDefault()        
+        
+        fetch(BASE_URL +`transport_companies`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(newItem),
+        })
+        
+        setUpdateState(!updateState);        
+        
+    } 
 
     //UPDATE COMPANY
     function onEdit(updatedItem){
@@ -48,11 +70,27 @@ function TransportCompanyContainer() {
     }
 
 
+    //POPULATE COMPANIES
+    function populateCompanies(){        
+        return (companies.map(company => <TransportCompany key={company.id} company={company} onDelete={onDelete} onEdit={onEdit}/>))
+    }
+
     return (
         <>
-        <ul>
-            {companies&&populateCompanies()}
-        </ul>
+            <button onClick={()=>setToggle(!toggle)}>New Company</button>
+            {
+                toggle&&(
+                    <form onSubmit={handleSubmit}>
+                        <input type="text" name="name" value={newItem.name} onChange={handleInputChange}/>                        
+                        <button type="submit">
+                            Create New Company
+                        </button> 
+                    </form>
+                )
+            }
+            <ul>
+                {companies&&populateCompanies()}
+            </ul>
         </>
     )
 }

@@ -35,7 +35,7 @@ function TransportCompany({company, onDelete, onEdit}) {
             {
                 toggle&&(
                     <form onSubmit={handleSubmit}>
-                        <label >First name:</label>
+                        <label >Company Name:</label>
                         <input type="text" name="name" value={updatedItem.name} onChange={handleInputChange}/>             
                         <button type="submit">
                             Modify Company
