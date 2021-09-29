@@ -1,10 +1,16 @@
-
+import { Switch, Route } from "react-router-dom";
+import NavBar from "./components/NavBar";
 
 function App() {
   return (
-    <div>
+    <>
       React App
-    </div>
+      <NavBar/>
+      <Switch>
+
+      </Switch>
+      
+    </>
   );
 }
 
