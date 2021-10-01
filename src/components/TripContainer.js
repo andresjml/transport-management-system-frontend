@@ -55,7 +55,7 @@ function TripContainer() {
 
     //UPDATE TRIP
     function onEdit(updatedItem){
-        console.log(updatedItem)
+        
         fetch(BASE_URL + `trips/${updatedItem.id}`, {
             method: "PATCH",
             headers: {
