@@ -8,7 +8,7 @@ function TripContainer() {
     const [vehicles, setVehicles]=useState(null)
     const [newItem, setNewItem]=useState({vehicle_id:"", order_id:"", status:false})
     const [orders, setOrders]=useState(null)
-    const [updateState, setUpdateState]=useState(false)
+    
 
     
     //READ TRIPS
