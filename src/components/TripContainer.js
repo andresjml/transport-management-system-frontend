@@ -16,7 +16,7 @@ function TripContainer() {
         fetch(BASE_URL +`/trips`)
             .then(r=>r.json())
             .then(setTrips)
-    }, [updateState]);
+    }, []);
 
 
     //READ VEHICLES
@@ -47,14 +47,15 @@ function TripContainer() {
           body: JSON.stringify(newItem),
         })
         
-        setUpdateState(!updateState);        
+        .then(r=>r.json())
+        .then(resp=>setTrips([...trips,resp]))       
         
     } 
 
 
     //UPDATE TRIP
     function onEdit(updatedItem){
-        
+        console.log(updatedItem)
         fetch(BASE_URL + `trips/${updatedItem.id}`, {
             method: "PATCH",
             headers: {
@@ -63,7 +64,16 @@ function TripContainer() {
             body: JSON.stringify(updatedItem),
           })
 
-        setUpdateState(!updateState);
+          .then(r=>r.json())
+          .then(resp=>{
+            const updatedTrips = trips.map((t) => {
+                if (t.id === resp.id) return resp;
+                return t;
+              });
+              setTrips(updatedTrips);
+          })
+
+        
     }
 
 

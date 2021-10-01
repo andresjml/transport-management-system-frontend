@@ -4,8 +4,7 @@ import TransportCompany from './TransportCompany';
 
 function TransportCompanyContainer() {
     const [companies, setCompanies]=useState(null)
-    const [toggle, setToggle]=useState(false)
-    const [updateState, setUpdateState]=useState(false)
+    const [toggle, setToggle]=useState(false)    
     const [newItem, setNewItem]=useState({name:""})
     
     //READ COMPANIES
@@ -13,7 +12,7 @@ function TransportCompanyContainer() {
         fetch(BASE_URL +`/transport_companies`)
             .then(r=>r.json())
             .then(setCompanies)
-    }, [updateState]);
+    }, []);
 
     //HANDLE INPUT CHANGE
     function handleInputChange(event) {
@@ -35,8 +34,9 @@ function TransportCompanyContainer() {
           },
           body: JSON.stringify(newItem),
         })
-        
-        setUpdateState(!updateState);        
+            .then(r=>r.json())
+            .then(resp=>setCompanies([...companies,resp]))
+                
         
     } 
 

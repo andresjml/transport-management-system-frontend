@@ -14,7 +14,7 @@ function Trip({trip, onDelete, onEdit}) {
     }, []);
 
    //HANDLE INPUT CHANGE
-   function handleInputChange(event) {
+   function handleInputChange(event) {       
         setUpdatedItem({
             ...trip, 
             [event.target.name]:event.target.value
@@ -43,7 +43,7 @@ function Trip({trip, onDelete, onEdit}) {
                     <br/>
                     Trip # {trip.id} | Order # {trip.order.id} | Client Name:{trip.order.client.name} | Address:{trip.order.client.address} | Transport Company: {trip.transport_company.name} | Vehicle ID: {trip.vehicle.id}
                     <br/>
-                    <button onClick={()=>setToggle(!toggle)}>Update Vehicle</button>        
+                    <button onClick={()=>setToggle(!toggle)}>Update Trip's Vehicle</button>        
                     <button onClick={()=>onDelete(trip)}>Delete</button>            
                 </li>)
             }

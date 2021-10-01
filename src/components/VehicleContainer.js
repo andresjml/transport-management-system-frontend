@@ -7,14 +7,14 @@ function VehicleContainer() {
     const [toggle, setToggle]=useState(false)
     const [companies, setCompanies]=useState(null)
     const [newItem, setNewItem]=useState({v_type:"", capacity:"",transport_company_id:""})
-    const [updateState, setUpdateState]=useState(false)
+    
     
     //READ VEHICLES
     useEffect(() => {
         fetch(BASE_URL +`/vehicles`)
             .then(r=>r.json())
             .then(setVehicles)
-    }, [updateState]);
+    }, []);
 
     //READ COMPANIES
     useEffect(() => {
@@ -44,7 +44,8 @@ function VehicleContainer() {
           body: JSON.stringify(newItem),
         })
         
-        setUpdateState(!updateState);        
+        .then(r=>r.json())
+        .then(resp=>setVehicles([...vehicles,resp]))        
         
     } 
 
