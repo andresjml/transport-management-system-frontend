@@ -39,6 +39,7 @@ function TripContainer() {
     function handleSubmit(e){
         e.preventDefault()
         
+        
         fetch(BASE_URL +`orders/${newItem.order_id}`, {
             method: "PATCH",
             headers: {
@@ -66,6 +67,7 @@ function TripContainer() {
         .then(r=>r.json())
         .then(resp=>setTrips([...trips,resp]))       
         
+        setToggle(!toggle)
     } 
 
 
