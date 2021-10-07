@@ -37,7 +37,17 @@ function TripContainer() {
 
     //CREATE A NEW TRIP
     function handleSubmit(e){
-        e.preventDefault()        
+        e.preventDefault()
+        
+        fetch(BASE_URL +`orders/${newItem.order_id}`, {
+            method: "PATCH",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({status:true}),
+          })
+          .then(r=>r.json())
+          .then(resp=>console.log(resp))
         
         fetch(BASE_URL +`trips`, {
           method: "POST",
