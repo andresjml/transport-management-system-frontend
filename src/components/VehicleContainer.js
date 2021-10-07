@@ -45,8 +45,9 @@ function VehicleContainer() {
         })
         
         .then(r=>r.json())
-        .then(resp=>setVehicles([...vehicles,resp]))        
-        
+        .then(resp=>setVehicles([...vehicles,resp]))  
+
+        setToggle(!toggle)
     } 
 
     //DELETE VEHICLE
