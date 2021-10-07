@@ -37,7 +37,7 @@ function TransportCompanyContainer() {
             .then(r=>r.json())
             .then(resp=>setCompanies([...companies,resp]))
                 
-        
+        setToggle(!toggle)
     } 
 
     //UPDATE COMPANY
