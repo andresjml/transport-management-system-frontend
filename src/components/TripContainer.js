@@ -32,7 +32,7 @@ function TripContainer() {
         fetch(BASE_URL +`/orders`)
             .then(r=>r.json())
             .then(setOrders)
-    }, []);
+    }, [trips]);
     
 
     //CREATE A NEW TRIP
@@ -86,7 +86,7 @@ function TripContainer() {
 
     //DELETE TRIP
     function onDelete(deletedTrip){
-
+        
         fetch(BASE_URL +`orders/${deletedTrip.order.id}`, {
             method: "PATCH",
             headers: {
