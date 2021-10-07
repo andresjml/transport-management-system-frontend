@@ -9,23 +9,7 @@ function TripContainer() {
     const [newItem, setNewItem]=useState({vehicle_id:"", order_id:"", status:false})
     const [orders, setOrders]=useState(null)
     
-
-    function createData(trips){
-        let dataToGraph=[]
-
-        if(trips){
-            trips.map(trip=>{
-                let findCompany = dataToGraph.find(element=>element.company_name === trip.transport_company.name)     
-                if(findCompany){
-                    findCompany.trips=findCompany.trips+1
-                }else{
-                    dataToGraph.push({company_name:trip.transport_company.name, trips:1})
-                }        
-            })
-        }
-    }
-
-    createData(trips)
+    
 
     
     //READ TRIPS
@@ -33,7 +17,7 @@ function TripContainer() {
         fetch(BASE_URL +`/trips`)
             .then(r=>r.json())
             .then(setTrips)
-    }, []);
+    }, []);    
 
 
     //READ VEHICLES

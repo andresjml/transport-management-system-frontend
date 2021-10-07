@@ -7,13 +7,14 @@ import VehicleContainer from "./components/VehicleContainer";
 import Home from "./components/Home"
 
 function App() {
+  
   return (
     <>
       React App
       <NavBar/>
       <Switch>
         <Route exact path="/">
-          <Home/>
+          <Home />
         </Route>
         <Route path ="/orders">
           <OrderContainer/>
@@ -25,7 +26,7 @@ function App() {
           <VehicleContainer/>
         </Route>
         <Route path="/trips">
-          <TripContainer/>
+          <TripContainer />
         </Route>
         <Route path="*">
           <h1>404 Not Found</h1>
