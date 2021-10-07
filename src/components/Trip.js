@@ -23,7 +23,7 @@ function Trip({trip, onDelete, onEdit, changeAssigned}) {
 
     //POPULATE VEHICLES FOR INPUT FORM
     function populateVehicles(){
-        return (vehicles.map(vehicle => <option key={vehicle.id} value={vehicle.id} >ID:{vehicle.id}-{vehicle.v_type} / Company: {vehicle.transport_company.name}</option>))
+        return (vehicles.map(vehicle => vehicle.assigned? null: <option key={vehicle.id} value={vehicle.id} >ID:{vehicle.id}-{vehicle.v_type} / Company: {vehicle.transport_company.name}</option>))
     }
 
 
