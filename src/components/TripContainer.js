@@ -46,9 +46,6 @@ function TripContainer() {
             },
             body: JSON.stringify({status:true}),
           })
-          .then(r=>r.json())
-          .then(resp=>console.log(resp))
-        
         fetch(BASE_URL +`trips`, {
           method: "POST",
           headers: {
@@ -89,6 +86,15 @@ function TripContainer() {
 
     //DELETE TRIP
     function onDelete(deletedTrip){
+
+        fetch(BASE_URL +`orders/${deletedTrip.order.id}`, {
+            method: "PATCH",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({status:false}),
+          })
+          
         
         fetch(BASE_URL + `trips/${deletedTrip.id}`, {
             method: "DELETE",
@@ -113,7 +119,7 @@ function TripContainer() {
 
     //POPULATE ORDERS FOR INPUT FORM
     function populateOrders(){
-        return (orders.map(order => <option key={order.id} value={order.id} >ID:{order.id}-Client:{order.client.name} / Volume: {order.volume}</option>))
+        return (orders.map(order => order.status? null:<option key={order.id} value={order.id} >ID:{order.id}-Client:{order.client.name} / Volume: {order.volume}</option>))
     }
 
 
