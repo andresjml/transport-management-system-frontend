@@ -1,15 +1,17 @@
 import React, {useState, useEffect} from 'react'
 import { BASE_URL } from '../constraints';
+import { VictoryBar, VictoryChart, VictoryAxis,  VictoryTheme, VictoryLabel } from 'victory';
 
 function Home() {
-    const [trips, setTrips]=useState(null)
-    const [dataToGraph, setDataToGraph]=useState([])
+    //const [trips, setTrips]=useState(null)
+    const [dataToGraph, setDataToGraph]=useState(null)
 
     //READ TRIPS
     useEffect(() => {
         fetch(BASE_URL +`/trips`)
             .then(r=>r.json())
-            .then(setTrips)
+            //.then(setTrips)
+            .then(resp =>createData(resp))
     }, []);
 
     //DATA FOR VICTORY
@@ -26,17 +28,26 @@ function Home() {
             })
         }
         setDataToGraph(dataToGraph)
+
+        console.log(dataToGraph)
     }
 
-    createData(trips);
-
     
     
-    return (        
-        <div>
-            
-            Home
-        </div>
+    
+    return (     
+        <VictoryChart domainPadding={20} theme={VictoryTheme.material}>
+            <VictoryAxis
+            label="Transport Company" style={{axisLabel: { padding: 30 }}} 
+            />
+            <VictoryAxis
+            dependentAxis
+            label="Trips" style={{axisLabel: { padding: 30 }}}
+            // tickFormat specifies how ticks should be displayed
+            //tickFormat={(x) => (`$${x / 1000}k`)}
+            />
+            <VictoryBar data={dataToGraph} x="company_name" y="trips" />
+        </VictoryChart>           
     )
 }
 
