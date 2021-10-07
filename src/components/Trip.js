@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import { BASE_URL } from "../constraints/index"
 
-function Trip({trip, onDelete, onEdit}) {
+function Trip({trip, onDelete, onEdit, changeAssigned}) {
     const [toggle, setToggle]=useState(false)    
     const [updatedItem, setUpdatedItem]=useState()
     const [vehicles, setVehicles]=useState(null)
@@ -31,6 +31,7 @@ function Trip({trip, onDelete, onEdit}) {
     function handleSubmit(e){
         e.preventDefault()
         onEdit(updatedItem)
+        changeAssigned(trip)
     }
     
 

@@ -24,7 +24,7 @@ function TripContainer() {
         fetch(BASE_URL +`/vehicles`)
             .then(r=>r.json())
             .then(setVehicles)
-    }, []);
+    }, [trips]);
 
 
     //READ ORDERS
@@ -45,7 +45,16 @@ function TripContainer() {
               "Content-Type": "application/json",
             },
             body: JSON.stringify({status:true}),
-          })
+        })
+
+        fetch(BASE_URL +`vehicles/${newItem.vehicle_id}`, {
+        method: "PATCH",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({assigned:true}),
+        })  
+
         fetch(BASE_URL +`trips`, {
           method: "POST",
           headers: {
@@ -78,7 +87,15 @@ function TripContainer() {
                 return t;
               });
               setTrips(updatedTrips);
-          })
+        })
+
+        fetch(BASE_URL +`vehicles/${updatedItem.vehicle_id}`, {
+        method: "PATCH",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({assigned:true}),
+        })
 
         
     }
@@ -93,7 +110,15 @@ function TripContainer() {
               "Content-Type": "application/json",
             },
             body: JSON.stringify({status:false}),
-          })
+        })
+
+        fetch(BASE_URL +`vehicles/${deletedTrip.vehicle_id}`, {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({assigned:false}),
+        })
           
         
         fetch(BASE_URL + `trips/${deletedTrip.id}`, {
@@ -104,16 +129,28 @@ function TripContainer() {
         setTrips(updatedTrips)
     }
 
+    //MODIFY ASSIGNED VEHICLE
+    function changeAssigned(trip){
+        
+        fetch(BASE_URL +`vehicles/${trip.vehicle_id}`, {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({assigned:false}),
+        })
+    }
+
 
     //POPULATE TRIPS
     function populateTrips(){        
-        return (trips.map(trip => <Trip key={trip.id} trip={trip} onDelete={onDelete} onEdit={onEdit}/>))
+        return (trips.map(trip => <Trip key={trip.id} trip={trip} onDelete={onDelete} onEdit={onEdit} changeAssigned={changeAssigned}/>))
     }
 
 
     //POPULATE VEHICLES FOR INPUT FORM
     function populateVehicles(){
-        return (vehicles.map(vehicle => <option key={vehicle.id} value={vehicle.id} >ID:{vehicle.id}-{vehicle.v_type} / Company: {vehicle.transport_company.name}</option>))
+        return (vehicles.map(vehicle => vehicle.assigned? null: <option key={vehicle.id} value={vehicle.id} >ID:{vehicle.id}-{vehicle.v_type} / Company: {vehicle.transport_company.name}</option>))
     }
 
 
