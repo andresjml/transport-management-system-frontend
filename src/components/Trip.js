@@ -11,7 +11,7 @@ function Trip({trip, onDelete, onEdit, changeAssigned}) {
         fetch(BASE_URL +`/vehicles`)
             .then(r=>r.json())
             .then(setVehicles)
-    }, []);
+    }, [toggle]);
 
    //HANDLE INPUT CHANGE
    function handleInputChange(event) {       
@@ -32,6 +32,7 @@ function Trip({trip, onDelete, onEdit, changeAssigned}) {
         e.preventDefault()
         onEdit(updatedItem)
         changeAssigned(trip)
+        setToggle(!toggle)
     }
     
 
