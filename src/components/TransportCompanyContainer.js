@@ -76,7 +76,7 @@ function TransportCompanyContainer() {
     }
 
     return (
-        <>
+        <div className="pt-5">
             <button onClick={()=>setToggle(!toggle)}>New Company</button>
             {
                 toggle&&(
@@ -92,7 +92,7 @@ function TransportCompanyContainer() {
             <ul>
                 {companies&&populateCompanies()}
             </ul>
-        </>
+        </div>
     )
 }
 

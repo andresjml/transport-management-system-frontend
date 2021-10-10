@@ -37,7 +37,7 @@ function Trip({trip, onDelete, onEdit, changeAssigned}) {
     
 
     return (
-        <>
+        <div className="pt-5">
             {
                 trip&&(
                 
@@ -63,7 +63,7 @@ function Trip({trip, onDelete, onEdit, changeAssigned}) {
                 )
             }
         
-        </>
+        </div>
     )
 }
 

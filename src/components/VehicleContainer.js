@@ -73,7 +73,7 @@ function VehicleContainer() {
 
 
     return (
-        <>
+        <div className="pt-5">
             <button onClick={()=>setToggle(!toggle)}>New Vehicle</button>
             {
                 toggle&&(
@@ -96,7 +96,7 @@ function VehicleContainer() {
             <ul>
                 {vehicles&&populateVehicles()}
             </ul>
-        </>
+        </div>
     )
 }
 
