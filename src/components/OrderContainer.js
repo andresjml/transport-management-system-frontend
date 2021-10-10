@@ -13,16 +13,34 @@ function OrderContainer() {
             .then(setOrders)
     }, []);
 
-    //POPULATE ORDERS    
-    function populateOrders(){        
-        return (orders.map(order => <Order key={order.id} order={order}/>))
+    //POPULATE ASSIGNED ORDERS    
+    function populateAssignedOrders(){        
+        return (orders.map(order => order.status? <Order key={order.id} order={order}/>:null))
+    }
+    
+    //POPULATE UNASSIGNED ORDERS    
+    function populateUnassignedOrders(){        
+        return (orders.map(order => order.status? null:<Order key={order.id} order={order}/>))
     }
 
 
     return (
-        <ul className="pt-5">
-            {orders&&populateOrders()}
-        </ul>
+        <div className="container">
+            <div className="row">
+                <div className="col">
+                    <h3>Assigned Orders</h3>
+                    <ul className="list-group list-group-flush pt-5">
+                        {orders&&populateAssignedOrders()}
+                    </ul>
+                </div>
+                <div className="col">            
+                    <h3>Unassigned Orders</h3>
+                    <ul className="list-group list-group-flush pt-5">
+                        {orders&&populateUnassignedOrders()}
+                    </ul>
+                </div>                
+            </div>
+        </div>
     )
 }
 

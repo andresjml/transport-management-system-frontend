@@ -6,7 +6,7 @@ function NavBar() {
         <div className="pb-5">
             <nav className="navbar navbar-light bg-light fixed-top">
                 <div className="container-fluid">
-                    <a className="navbar-brand" href="#">Offcanvas navbar</a>
+                    <Link className="navbar-brand" to="/">Transport Management System</Link>
                     <button className="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
                     <span className="navbar-toggler-icon"></span>
                     </button>
