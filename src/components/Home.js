@@ -43,6 +43,15 @@ function Home() {
         {
             dataToGraph&&(
                 <div className="row">
+                    <div className="col">   
+                        <table className="table">
+                            <tr>
+                                <th scope="col">Company</th>
+                                <th scope="col">Trips</th>
+                            </tr>
+                            {dataToGraph&&populateTableData()}            
+                        </table>
+                    </div>
                     <div className="col">
                         <div className="graph-container">
                             <VictoryChart domainPadding={20} theme={VictoryTheme.material}>
@@ -58,16 +67,7 @@ function Home() {
                                 <VictoryBar data={dataToGraph} x="company_name" y="trips" />
                             </VictoryChart>  
                         </div>
-                    </div>
-                    <div className="col">   
-                        <table className="">
-                            <tr>
-                                <th>Company</th>
-                                <th>Trips</th>
-                            </tr>
-                            {dataToGraph&&populateTableData()}            
-                        </table>
-                    </div>
+                    </div>                   
                 </div>
             )
         }    

@@ -9,8 +9,7 @@ import Home from "./components/Home"
 function App() {
   
   return (
-    <>
-      React App
+    <>      
       <NavBar/>
       <Switch>
         <Route exact path="/">
