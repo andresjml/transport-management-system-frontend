@@ -4,11 +4,14 @@ function Vehicle({vehicle, onDelete}) {
     return (
         <>
             {vehicle&&(
-                <li>
-                    Vehicle # {vehicle.id} | Vehicle Type: {vehicle.v_type} | Capacity:{vehicle.capacity} | Company:{vehicle.transport_company.name}
-                    <br/>
-                    <button onClick={()=>onDelete(vehicle)}>Delete</button>
-                </li>
+                <>
+                <th scope="row">{vehicle.id}</th>
+                <td>{vehicle.v_type}</td>
+                <td>{vehicle.capacity}</td>
+                <td>{vehicle.transport_company.name}</td>
+                <td><button onClick={()=>onDelete(vehicle)}>Delete</button></td>
+                    
+                </>
             )}      
                             
         </>

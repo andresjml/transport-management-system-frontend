@@ -93,7 +93,7 @@ function TransportCompanyContainer() {
             <table className="table table-hover">
                 <thead>
                     <tr>
-                        <th scope="col">#</th>
+                        <th scope="col">Company ID</th>
                         <th scope="col">Company Name</th>
                         <th scope="col">Vehicles</th>
                         <th scope="col"></th>

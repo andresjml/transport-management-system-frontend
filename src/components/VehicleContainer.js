@@ -63,7 +63,7 @@ function VehicleContainer() {
 
     //POPULATE VEHICLES
     function populateVehicles(){        
-        return (vehicles.map(vehicle => <Vehicle key={vehicle.id} vehicle={vehicle} onDelete={onDelete}/>))
+        return (vehicles.map(vehicle => <tr><Vehicle key={vehicle.id} vehicle={vehicle} onDelete={onDelete}/></tr>))
     }
 
     //POPULATE COMPANIES FOR INPUT FORM
@@ -93,9 +93,20 @@ function VehicleContainer() {
                     </form>
                 )
             }
-            <ul>
-                {vehicles&&populateVehicles()}
-            </ul>
+            <table className="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">Vehicle ID</th>
+                        <th scope="col">Vehicle Type</th>
+                        <th scope="col">Capacity</th>
+                        <th scope="col">Company</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {vehicles&&populateVehicles()}
+                </tbody>
+            </table>
         </div>
     )
 }

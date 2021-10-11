@@ -25,9 +25,9 @@ function TransportCompany({company, onDelete, onEdit}) {
         <>
             {company&&(
                 <>
-                    <td>
+                    <th scope="row">
                         {company.id}
-                    </td>
+                    </th>
                     <td>
                         {company.name}
                     </td>
