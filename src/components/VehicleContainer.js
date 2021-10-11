@@ -74,20 +74,20 @@ function VehicleContainer() {
 
     return (
         <div className="pt-5">
-            <button onClick={()=>setToggle(!toggle)}>New Vehicle</button>
+            <button onClick={()=>setToggle(!toggle)} class="btn btn-outline-dark">New Vehicle</button>
             {
                 toggle&&(
                     <form onSubmit={handleSubmit}>
-                        Company:
+                        Company: 
                         <select name='transport_company_id' onChange={handleInputChange}>
                             <option >Select Company</option>
                             {vehicles&&populateCompanies()}
                         </select>
-                        Type:
+                        Type: 
                         <input type="text" name="v_type" value={newItem.v_type} onChange={handleInputChange}/>
-                        Capacity:
+                        Capacity: 
                         <input type="number" name="capacity" value={newItem.capacity} onChange={handleInputChange}/>
-                        <button type="submit">
+                        <button type="submit" class="btn btn-outline-dark">
                             Create New Vehicle
                         </button> 
                     </form>

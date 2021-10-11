@@ -9,7 +9,7 @@ function Vehicle({vehicle, onDelete}) {
                 <td>{vehicle.v_type}</td>
                 <td>{vehicle.capacity}</td>
                 <td>{vehicle.transport_company.name}</td>
-                <td><button onClick={()=>onDelete(vehicle)}>Delete</button></td>
+                <td><button onClick={()=>onDelete(vehicle)} class="btn btn-outline-dark">Delete</button></td>
                     
                 </>
             )}      
