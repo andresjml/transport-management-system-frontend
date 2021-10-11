@@ -173,7 +173,7 @@ function TripContainer() {
 
 
     return (
-        <>
+        <div className="pt-5">
             <button onClick={()=>setToggle(!toggle)} className="btn btn-outline-dark">New Trip</button>
             {
                 toggle&&(
@@ -211,7 +211,7 @@ function TripContainer() {
                     {trips&&populateTrips()}
                 </tbody>                
             </table>
-        </>
+        </div>
     )
 }
 
