@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react'
 import { BASE_URL } from "../constraints/index"
 import Order from './Order'
 import { VictoryPie, VictoryTheme} from 'victory';
-
+import {Link} from 'react-router-dom'
 
 function OrderContainer() {
     const [orders, setOrders]=useState(null)
@@ -54,7 +54,7 @@ function OrderContainer() {
 
 
     return (
-        <div className="container">
+        <div className="container pt-5">
             <div className="row">
                 <div className="col">
                     <VictoryPie data={dataToGraph} height={200} theme={VictoryTheme.material}/>
@@ -67,7 +67,8 @@ function OrderContainer() {
                         </tr>
                         {dataToGraph&&populateTableData()}            
                     </table>
-                </div>            
+                    <Link to="/trips"><button type="button" class="btn btn-outline-dark">Assing Orders</button></Link>
+                </div>                           
             </div>
             
             <div className="row">
