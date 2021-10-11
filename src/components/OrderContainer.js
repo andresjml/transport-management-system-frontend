@@ -46,14 +46,30 @@ function OrderContainer() {
     }
 
     
-    
+    function populateTableData(){
+        return(dataToGraph.map(data =><tr><td>{data.x}</td><td>{data.y}</td></tr>))
+    }
    
     
 
 
     return (
         <div className="container">
-            <VictoryPie data={dataToGraph} height={200} theme={VictoryTheme.material}/>
+            <div className="row">
+                <div className="col">
+                    <VictoryPie data={dataToGraph} height={200} theme={VictoryTheme.material}/>
+                </div>
+                <div className="col">
+                    <table className="table">
+                        <tr>
+                            <th scope="col">Status</th>
+                            <th scope="col">count</th>
+                        </tr>
+                        {dataToGraph&&populateTableData()}            
+                    </table>
+                </div>            
+            </div>
+            
             <div className="row">
                 <div className="col">
                     <h3>Assigned Orders</h3>
