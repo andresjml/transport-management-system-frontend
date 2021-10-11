@@ -37,33 +37,52 @@ function Trip({trip, onDelete, onEdit, changeAssigned}) {
     
 
     return (
-        <div className="pt-5">
+        <>
             {
                 trip&&(
-                
-                <li>           
-                    <br/>
-                    Trip # {trip.id} | Order # {trip.order.id} | Client Name:{trip.order.client.name} | Address:{trip.order.client.address} | Transport Company: {trip.transport_company.name} | Vehicle ID: {trip.vehicle.id}
-                    <br/>
-                    <button onClick={()=>setToggle(!toggle)}>Update Trip's Vehicle</button>        
-                    <button onClick={()=>onDelete(trip)}>Delete</button>            
-                </li>)
-            }
-            {
-                toggle&&(
-                    <form onSubmit={handleSubmit}>
-                    <select name='vehicle_id' onChange={handleInputChange}>
-                        <option >Select Vehicle</option>
-                        {vehicles&&populateVehicles()}
-                    </select>                    
-                    <button type="submit">
-                        Modify Trip
-                    </button> 
-                </form>
-                )
-            }
+                <>
+                    <th scope="row">
+                        {trip.id}
+                    </th>
+                    <td>
+                        {trip.order.id}
+                    </td>
+                    <td>
+                        {trip.order.client.name}
+                    </td>
+                    <td>
+                        {trip.order.client.address}
+                    </td>
+                    <td>
+                        {trip.transport_company.name}
+                    </td>
+                    <td>
+                        {trip.vehicle.id}
+                    </td>
+                    <td>
+                        <button onClick={()=>setToggle(!toggle)} className="btn btn-outline-dark">Update Trip's Vehicle</button>
+                        {
+                            toggle&&(
+                                <form onSubmit={handleSubmit}>
+                                <select name='vehicle_id' onChange={handleInputChange}>
+                                    <option >Select Vehicle</option>
+                                    {vehicles&&populateVehicles()}
+                                </select>                    
+                                <button type="submit" className="btn btn-outline-dark">
+                                    Modify Trip
+                                </button> 
+                            </form>
+                            )
+                        }
+                    </td>
+                    <td>
+                        <button onClick={()=>onDelete(trip)} className="btn btn-outline-dark">Delete</button>
+                    </td>
+                </>
+                    )}
+            
         
-        </div>
+        </>
     )
 }
 

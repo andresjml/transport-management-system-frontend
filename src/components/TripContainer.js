@@ -147,7 +147,7 @@ function TripContainer() {
 
     //POPULATE TRIPS
     function populateTrips(){        
-        return (trips.map(trip => <Trip key={trip.id} trip={trip} onDelete={onDelete} onEdit={onEdit} changeAssigned={changeAssigned}/>))
+        return (trips.map(trip => <tr><Trip key={trip.id} trip={trip} onDelete={onDelete} onEdit={onEdit} changeAssigned={changeAssigned}/></tr>))
     }
 
 
@@ -174,7 +174,7 @@ function TripContainer() {
 
     return (
         <>
-            <button onClick={()=>setToggle(!toggle)}>New Trip</button>
+            <button onClick={()=>setToggle(!toggle)} className="btn btn-outline-dark">New Trip</button>
             {
                 toggle&&(
                     <form onSubmit={handleSubmit}>
@@ -194,9 +194,23 @@ function TripContainer() {
             }
 
 
-            <ul>
-                {trips&&populateTrips()}
-            </ul>
+            <table className="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">Trip ID</th>
+                        <th scope="col">Order ID</th>
+                        <th scope="col">Client Name</th>
+                        <th scope="col">Address</th>
+                        <th scope="col">Transport Company</th>
+                        <th scope="col">Vehicle ID</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {trips&&populateTrips()}
+                </tbody>                
+            </table>
         </>
     )
 }
