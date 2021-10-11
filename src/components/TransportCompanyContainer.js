@@ -38,6 +38,7 @@ function TransportCompanyContainer() {
             .then(resp=>setCompanies([...companies,resp]))
                 
         setToggle(!toggle)
+        setNewItem({name:""})
     } 
 
     //UPDATE COMPANY
@@ -72,12 +73,12 @@ function TransportCompanyContainer() {
 
     //POPULATE COMPANIES
     function populateCompanies(){        
-        return (companies.map(company => <TransportCompany key={company.id} company={company} onDelete={onDelete} onEdit={onEdit}/>))
+        return (companies.map(company =><tr><TransportCompany key={company.id} company={company} onDelete={onDelete} onEdit={onEdit}/></tr>))
     }
 
     return (
         <div className="pt-5">
-            <button onClick={()=>setToggle(!toggle)}>New Company</button>
+            <button onClick={()=>setToggle(!toggle)} class="btn btn-outline-dark">New Company</button>
             {
                 toggle&&(
                     <form onSubmit={handleSubmit}>
@@ -89,9 +90,22 @@ function TransportCompanyContainer() {
                     </form>
                 )
             }
-            <ul>
-                {companies&&populateCompanies()}
-            </ul>
+            <table className="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Company Name</th>
+                        <th scope="col">Vehicles</th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {companies&&populateCompanies()}
+                </tbody>
+                
+            </table>
         </div>
     )
 }

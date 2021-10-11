@@ -24,26 +24,37 @@ function TransportCompany({company, onDelete, onEdit}) {
     return (
         <>
             {company&&(
-                <li>
-                <br/>
-                Company Name:{company.name}|Vehicles: {company.vehicles.length > 0?company.vehicles.length:"None"}
-                <br/>
-                <button onClick={()=>setToggle(!toggle)}>Update Company</button>        
-                <button onClick={()=>onDelete(company)}>Delete</button>
-                </li>
+                <>
+                    <td>
+                        {company.id}
+                    </td>
+                    <td>
+                        {company.name}
+                    </td>
+                    <td>
+                        {company.vehicles.length > 0?company.vehicles.length:"None"}
+                    </td>  
+
+
+                    <td>
+                        <button onClick={()=>setToggle(!toggle)} class="btn btn-outline-dark">Update Company</button>
+                    </td>
+                    {toggle&&(<td>
+                                <form onSubmit={handleSubmit}>
+                                    <label >Company Name:</label>
+                                    <input type="text" name="name" value={updatedItem.name} onChange={handleInputChange}/>             
+                                    <button type="submit" class="btn btn-outline-dark">
+                                        Modify Company
+                                    </button> 
+                                </form>
+                            </td>
+                        )}
+                    <td>
+                        <button onClick={()=>onDelete(company)} class="btn btn-outline-dark">Delete</button>
+                    </td>
+
+                </>
             )}
-            {
-                toggle&&(
-                    <form onSubmit={handleSubmit}>
-                        <label >Company Name:</label>
-                        <input type="text" name="name" value={updatedItem.name} onChange={handleInputChange}/>             
-                        <button type="submit">
-                            Modify Company
-                        </button> 
-                    </form>
-                )
-            }
-            
         </>
     )
 }
