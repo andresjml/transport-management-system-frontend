@@ -74,7 +74,7 @@ function VehicleContainer() {
 
     return (
         <div className="pt-5">
-            <button onClick={()=>setToggle(!toggle)} class="btn btn-outline-dark">New Vehicle</button>
+            <button onClick={()=>setToggle(!toggle)} className="btn btn-outline-dark">New Vehicle</button>
             {
                 toggle&&(
                     <form onSubmit={handleSubmit}>
@@ -87,7 +87,7 @@ function VehicleContainer() {
                         <input type="text" name="v_type" value={newItem.v_type} onChange={handleInputChange}/>
                         Capacity: 
                         <input type="number" name="capacity" value={newItem.capacity} onChange={handleInputChange}/>
-                        <button type="submit" class="btn btn-outline-dark">
+                        <button type="submit" className="btn btn-outline-dark">
                             Create New Vehicle
                         </button> 
                     </form>

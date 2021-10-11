@@ -37,20 +37,20 @@ function TransportCompany({company, onDelete, onEdit}) {
 
 
                     <td>
-                        <button onClick={()=>setToggle(!toggle)} class="btn btn-outline-dark">Update Company</button>
+                        <button onClick={()=>setToggle(!toggle)} className="btn btn-outline-dark">Update Company</button>
                     </td>
                     {toggle&&(<td>
                                 <form onSubmit={handleSubmit}>
                                     <label >Company Name:</label>
                                     <input type="text" name="name" value={updatedItem.name} onChange={handleInputChange}/>             
-                                    <button type="submit" class="btn btn-outline-dark">
+                                    <button type="submit" className="btn btn-outline-dark">
                                         Modify Company
                                     </button> 
                                 </form>
                             </td>
                         )}
                     <td>
-                        <button onClick={()=>onDelete(company)} class="btn btn-outline-dark">Delete</button>
+                        <button onClick={()=>onDelete(company)} className="btn btn-outline-dark">Delete</button>
                     </td>
 
                 </>

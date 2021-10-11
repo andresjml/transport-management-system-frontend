@@ -78,7 +78,7 @@ function TransportCompanyContainer() {
 
     return (
         <div className="pt-5">
-            <button onClick={()=>setToggle(!toggle)} class="btn btn-outline-dark">New Company</button>
+            <button onClick={()=>setToggle(!toggle)} className="btn btn-outline-dark">New Company</button>
             {
                 toggle&&(
                     <form onSubmit={handleSubmit}>

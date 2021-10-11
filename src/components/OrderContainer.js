@@ -67,7 +67,7 @@ function OrderContainer() {
                         </tr>
                         {dataToGraph&&populateTableData()}            
                     </table>
-                    <Link to="/trips"><button type="button" class="btn btn-outline-dark">Assing Orders</button></Link>
+                    <Link to="/trips"><button type="button" className="btn btn-outline-dark">Assing Orders</button></Link>
                 </div>                           
             </div>
             
