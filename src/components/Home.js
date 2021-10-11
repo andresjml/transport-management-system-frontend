@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import { BASE_URL } from '../constraints';
 import { VictoryBar, VictoryChart, VictoryAxis,  VictoryTheme} from 'victory';
-import './Home.css'
 
 function Home() {
     const [dataToGraph, setDataToGraph]=useState(null)
@@ -54,7 +53,7 @@ function Home() {
                     </div>
                     <div className="col">
                         <div className="graph-container">
-                            <VictoryChart domainPadding={20} theme={VictoryTheme.material}>
+                            <VictoryChart domainPadding={20} theme={VictoryTheme.material} height={200} >
                                 <VictoryAxis
                                 label="Transport Company" style={{axisLabel: { padding: 30 }}} 
                                 
