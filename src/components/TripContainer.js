@@ -41,7 +41,7 @@ function TripContainer() {
         e.preventDefault()
         
         
-        fetch(BASE_URL +`orders/${newItem.order_id}`, {
+        fetch(BASE_URL +`/orders/${newItem.order_id}`, {
             method: "PATCH",
             headers: {
               "Content-Type": "application/json",
@@ -49,7 +49,7 @@ function TripContainer() {
             body: JSON.stringify({status:true}),
         })
 
-        fetch(BASE_URL +`vehicles/${newItem.vehicle_id}`, {
+        fetch(BASE_URL +`/vehicles/${newItem.vehicle_id}`, {
         method: "PATCH",
         headers: {
             "Content-Type": "application/json",
@@ -57,7 +57,7 @@ function TripContainer() {
         body: JSON.stringify({assigned:true}),
         })  
 
-        fetch(BASE_URL +`trips`, {
+        fetch(BASE_URL +`/trips`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -75,7 +75,7 @@ function TripContainer() {
     //UPDATE TRIP
     function onEdit(updatedItem){
         
-        fetch(BASE_URL + `trips/${updatedItem.id}`, {
+        fetch(BASE_URL + `/trips/${updatedItem.id}`, {
             method: "PATCH",
             headers: {
               "Content-Type": "application/json",
@@ -92,7 +92,7 @@ function TripContainer() {
               setTrips(updatedTrips);
             })
 
-        fetch(BASE_URL +`vehicles/${updatedItem.vehicle_id}`, {
+        fetch(BASE_URL +`/vehicles/${updatedItem.vehicle_id}`, {
         method: "PATCH",
         headers: {
             "Content-Type": "application/json",
@@ -107,7 +107,7 @@ function TripContainer() {
     //DELETE TRIP
     function onDelete(deletedTrip){
         
-        fetch(BASE_URL +`orders/${deletedTrip.order.id}`, {
+        fetch(BASE_URL +`/orders/${deletedTrip.order.id}`, {
             method: "PATCH",
             headers: {
               "Content-Type": "application/json",
@@ -115,7 +115,7 @@ function TripContainer() {
             body: JSON.stringify({status:false}),
         })
 
-        fetch(BASE_URL +`vehicles/${deletedTrip.vehicle_id}`, {
+        fetch(BASE_URL +`/vehicles/${deletedTrip.vehicle_id}`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json",
@@ -124,7 +124,7 @@ function TripContainer() {
         })
           
         
-        fetch(BASE_URL + `trips/${deletedTrip.id}`, {
+        fetch(BASE_URL + `/trips/${deletedTrip.id}`, {
             method: "DELETE",
         })
         
@@ -135,7 +135,7 @@ function TripContainer() {
     //COMPLETED TRIP
     function onComplete(completedTrip){
 
-        fetch(BASE_URL +`trips/${completedTrip.id}`, {
+        fetch(BASE_URL +`/trips/${completedTrip.id}`, {
             method: "PATCH",
             headers: {
               "Content-Type": "application/json",
@@ -151,7 +151,7 @@ function TripContainer() {
                 setTrips(updatedTrips);
         })
         
-        fetch(BASE_URL +`vehicles/${completedTrip.vehicle_id}`, {
+        fetch(BASE_URL +`/vehicles/${completedTrip.vehicle_id}`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json",
@@ -165,7 +165,7 @@ function TripContainer() {
     //MODIFY ASSIGNED VEHICLE
     function changeAssigned(trip){
         
-        fetch(BASE_URL +`vehicles/${trip.vehicle_id}`, {
+        fetch(BASE_URL +`/vehicles/${trip.vehicle_id}`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json",

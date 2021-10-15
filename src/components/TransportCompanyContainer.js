@@ -27,7 +27,7 @@ function TransportCompanyContainer() {
     function handleSubmit(e){
         e.preventDefault()        
         
-        fetch(BASE_URL +`transport_companies`, {
+        fetch(BASE_URL +`/transport_companies`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -44,7 +44,7 @@ function TransportCompanyContainer() {
     //UPDATE COMPANY
     function onEdit(updatedItem){
         
-        fetch(BASE_URL + `transport_companies/${updatedItem.id}`, {
+        fetch(BASE_URL + `/transport_companies/${updatedItem.id}`, {
             method: "PATCH",
             headers: {
               "Content-Type": "application/json",
@@ -62,7 +62,7 @@ function TransportCompanyContainer() {
     //DELETE COMPANY
     function onDelete(deletedCompany){
         
-        fetch(BASE_URL + `transport_companies/${deletedCompany.id}`, {
+        fetch(BASE_URL + `/transport_companies/${deletedCompany.id}`, {
             method: "DELETE",
         })
         

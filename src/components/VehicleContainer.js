@@ -36,7 +36,7 @@ function VehicleContainer() {
     function handleSubmit(e){
         e.preventDefault()        
         
-        fetch(BASE_URL +`vehicles`, {
+        fetch(BASE_URL +`/vehicles`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -53,7 +53,7 @@ function VehicleContainer() {
     //DELETE VEHICLE
     function onDelete(deletedVehicle){
         
-        fetch(BASE_URL + `vehicles/${deletedVehicle.id}`, {
+        fetch(BASE_URL + `/vehicles/${deletedVehicle.id}`, {
             method: "DELETE",
         })
         
