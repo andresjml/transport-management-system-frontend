@@ -90,7 +90,7 @@ function TripContainer() {
                 return t;
               });
               setTrips(updatedTrips);
-        })
+            })
 
         fetch(BASE_URL +`vehicles/${updatedItem.vehicle_id}`, {
         method: "PATCH",
@@ -132,6 +132,36 @@ function TripContainer() {
         setTrips(updatedTrips)
     }
 
+    //COMPLETED TRIP
+    function onComplete(completedTrip){
+
+        fetch(BASE_URL +`trips/${completedTrip.id}`, {
+            method: "PATCH",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({status:true}),
+        })
+            .then(r=>r.json())
+            .then(resp=>{
+            const updatedTrips = trips.map((t) => {
+                if (t.id === resp.id) return resp;
+                return t;
+                });
+                setTrips(updatedTrips);
+        })
+        
+        fetch(BASE_URL +`vehicles/${completedTrip.vehicle_id}`, {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({assigned:false}),
+        })
+
+        
+    }
+
     //MODIFY ASSIGNED VEHICLE
     function changeAssigned(trip){
         
@@ -147,7 +177,7 @@ function TripContainer() {
 
     //POPULATE TRIPS
     function populateTrips(){        
-        return (trips.map(trip => <tr><Trip key={trip.id} trip={trip} onDelete={onDelete} onEdit={onEdit} changeAssigned={changeAssigned}/></tr>))
+        return (trips.map(trip => <tr><Trip key={trip.id} trip={trip} onDelete={onDelete} onEdit={onEdit} changeAssigned={changeAssigned} onComplete={onComplete}/></tr>))
     }
 
 

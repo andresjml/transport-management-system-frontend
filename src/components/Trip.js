@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import { BASE_URL } from "../constraints/index"
 
-function Trip({trip, onDelete, onEdit, changeAssigned}) {
+function Trip({trip, onDelete, onEdit, changeAssigned, onComplete}) {
     const [toggle, setToggle]=useState(false)    
     const [updatedItem, setUpdatedItem]=useState()
     const [vehicles, setVehicles]=useState(null)
@@ -60,7 +60,7 @@ function Trip({trip, onDelete, onEdit, changeAssigned}) {
                         {trip.vehicle.id}
                     </td>
                     <td>
-                        <button onClick={()=>setToggle(!toggle)} className="btn btn-outline-dark">Update Trip's Vehicle</button>
+                    {trip.status? <h6>Trip Completed</h6>:<button onClick={()=>setToggle(!toggle)} className="btn btn-outline-dark">Update Trip's Vehicle</button>}
                         {
                             toggle&&(
                                 <form onSubmit={handleSubmit}>
@@ -76,7 +76,10 @@ function Trip({trip, onDelete, onEdit, changeAssigned}) {
                         }
                     </td>
                     <td>
-                        <button onClick={()=>onDelete(trip)} className="btn btn-outline-dark">Delete</button>
+                        {trip.status? null:<button onClick={()=>onComplete(trip)} className="btn btn-outline-dark">Complete Trip</button>}
+                    </td>
+                    <td>
+                    {trip.status? null:<button onClick={()=>onDelete(trip)} className="btn btn-outline-dark">Delete Trip</button>}
                     </td>
                 </>
                     )}
