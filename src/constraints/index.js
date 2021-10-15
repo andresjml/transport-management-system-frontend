@@ -1,1 +1,1 @@
-export const BASE_URL='http://fierce-citadel-67523.herokuapp.com/'
+export const BASE_URL='http://fierce-citadel-67523.herokuapp.com'
