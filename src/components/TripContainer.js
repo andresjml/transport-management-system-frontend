@@ -223,7 +223,7 @@ function TripContainer() {
                 )
             }
 
-
+            
             <table className="table table-hover">
                 <thead>
                     <tr>

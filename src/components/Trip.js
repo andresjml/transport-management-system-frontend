@@ -60,7 +60,7 @@ function Trip({trip, onDelete, onEdit, changeAssigned, onComplete}) {
                         {trip.vehicle.id}
                     </td>
                     <td>
-                    {trip.status? <h6>Trip Completed</h6>:<button onClick={()=>setToggle(!toggle)} className="btn btn-outline-dark">Update Trip's Vehicle</button>}
+                        {trip.status? <h6>Trip Completed</h6>:<button onClick={()=>setToggle(!toggle)} className="btn btn-outline-dark">Update Trip's Vehicle</button>}
                         {
                             toggle&&(
                                 <form onSubmit={handleSubmit}>
@@ -79,7 +79,7 @@ function Trip({trip, onDelete, onEdit, changeAssigned, onComplete}) {
                         {trip.status? null:<button onClick={()=>onComplete(trip)} className="btn btn-outline-dark">Complete Trip</button>}
                     </td>
                     <td>
-                    {trip.status? null:<button onClick={()=>onDelete(trip)} className="btn btn-outline-dark">Delete Trip</button>}
+                        {trip.status? null:<button onClick={()=>onDelete(trip)} className="btn btn-outline-dark">Delete Trip</button>}
                     </td>
                 </>
                     )}
