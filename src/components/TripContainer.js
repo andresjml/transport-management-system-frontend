@@ -66,7 +66,7 @@ function TripContainer() {
         })
         
         .then(r=>r.json())
-        .then(resp=>setTrips([...trips,resp]))       
+        .then(resp=>setTrips([resp,...trips]))       
         
         setToggle(!toggle)
     } 
