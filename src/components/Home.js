@@ -39,6 +39,7 @@ function Home() {
     
     return ( 
         <div className="container pt-5">
+            <h1>Trips Snapshot</h1>
         {
             dataToGraph&&(
                 <div className="row">
@@ -69,10 +70,7 @@ function Home() {
                     </div>                   
                 </div>
             )
-        }    
-        
-
-
+        }   
         </div>   
     )
 }
